@@ -1,5 +1,4 @@
 package be.aristide.springbootangular.Services;
-
 import be.aristide.springbootangular.Models.Category;
 import be.aristide.springbootangular.Models.Product;
 import be.aristide.springbootangular.Repos.ProductsRepository;
@@ -7,10 +6,10 @@ import be.aristide.springbootangular.Repos.ProductsRepository;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class ProductsService implements Service<Product> {
+public class ProductService implements Service<Product> {
     private final ProductsRepository productsRepository;
 
-    public ProductsService(ProductsRepository productsRepository){
+    public ProductService(ProductsRepository productsRepository){
         super();
         this.productsRepository = productsRepository;
     }
