@@ -1,6 +1,7 @@
 package be.aristide.springbootangular;
 
-import be.aristide.springbootangular.Models.Products;
+import be.aristide.springbootangular.Models.Category;
+import be.aristide.springbootangular.Models.Product;
 import be.aristide.springbootangular.Repos.ProductsRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,35 +18,93 @@ class SpringBootAngularApplicationTests {
 
     @Test
     public void testCreateProduct(){
-        Products products = new Products("Iphone 16 Pro Max", 1479.0, new Date());
-        productsRepository.save(products);
+        Product product = new Product("Iphone 16 Pro Max", 1479.0, new Date());
+        productsRepository.save(product);
     }
 
     @Test
     public void testFindProduct(){
-        Products products = productsRepository.findById(1L).get();
-        System.out.println(products);
+        Product product = productsRepository.findById(1L).get();
+        System.out.println(product);
     }
 
     @Test
     public void testUpdateProduct(){
-        Products products = productsRepository.findById(1L).get();
-        products.setPrice(1000.0);
-        productsRepository.save(products);
+        Product product = productsRepository.findById(1L).get();
+        product.setPrice(1000.0);
+        productsRepository.save(product);
     }
 
     @Test
     public void testDeleteProduct(){
-        Products products = new Products("Iphone 16 Pro Max", 1479.0, new Date());
-        productsRepository.save(products);
-        System.out.println(products);
-        productsRepository.deleteById(products.getId());
+        Product product = new Product("Iphone 16 Pro Max", 1479.0, new Date());
+        productsRepository.save(product);
+        System.out.println(product);
+        productsRepository.deleteById(product.getId());
     }
 
     @Test
     public void testFindAllProduct(){
-        List<Products> products = productsRepository.findAll();
-        for(Products product : products){
+        List<Product> products = productsRepository.findAll();
+        for(Product product : products){
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void testFindByName(){
+        List<Product> products = productsRepository.findByName("Iphone 16 Pro Max");
+        for(Product product : products){
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void testFindByNameContains(){
+        List<Product> products = productsRepository.findByNameContains("Iphone");
+        for(Product product : products){
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void testFindByNamePrice(){
+        List<Product> products = productsRepository.findByNamePrice("Iphone 16 Pro Max", 1000.0);
+        for(Product product : products){
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void testFindByCategory(){
+        Category category = new Category();
+        category.setId(1L);
+        List<Product> products = productsRepository.findByCategory(category);
+        for(Product product : products){
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void testFindByCategory_Id(){
+        List<Product> products = productsRepository.findByCategory_Id(1L);
+        for(Product product : products){
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void testFindByOrderByNameAsc(){
+        List<Product> products = productsRepository.findByOrderByNameAsc();
+        for(Product product : products){
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void testOrderByNamePrice(){
+        List<Product> products = productsRepository.orderByNamePrice();
+        for(Product product : products){
             System.out.println(product);
         }
     }
