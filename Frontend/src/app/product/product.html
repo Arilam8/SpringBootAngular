@@ -1,18 +1,33 @@
 <div class="container">
   <div class="card shadow mb-4">
     <div class="card-body">
-      <table>
+      <table class="table table-striped">
         <thead>
-          <tr>
-            <th>List of products</th>
-          </tr>
+          @if (products.length > 0) {
+            <tr>
+              <th>Index</th>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Creation</th>
+            </tr>
+          }
         </thead>
-        @for(product of products; track product){
+        @for(product of products; track product.id; let index = $index; let count = $count; let first = $first; let last = $last){
           <tbody>
           <tr>
-            <td>{{product}}</td>
+            <td>{{index}}</td>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.date | date: "dd/MM/yyyy"}}</td>
           </tr>
           </tbody>
+          @if (last){
+            <h1>Count : {{count}}</h1>
+          }
+        } @empty {
+          <h1>No product found !</h1>
         }
       </table>
     </div>

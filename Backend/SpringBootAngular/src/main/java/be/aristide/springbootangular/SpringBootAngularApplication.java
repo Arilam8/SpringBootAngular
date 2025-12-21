@@ -7,6 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @SpringBootApplication
 public class SpringBootAngularApplication implements CommandLineRunner {
     @Autowired

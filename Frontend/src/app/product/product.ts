@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
-import {NgForOf} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import { Product as P } from '../Models/product.model';
+import {DatePipe} from '@angular/common';
+import {ProductService} from '../services/product';
 
 @Component({
   selector: 'app-product',
   imports: [
-    NgForOf
+    DatePipe
   ],
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
-export class Product {
-  products: string[];
+export class Product implements OnInit {
+  products: P[];
 
-  constructor() {
-    this.products = ["iPhone", "iPad", "iPod"];
+  constructor(private productService: ProductService) {
+    this.products = [];
+  }
+
+  ngOnInit(): void {
+    this.products = this.productService.getProducts();
   }
 }
