@@ -5,31 +5,31 @@
   <form >
 
     <div class="col-sm-2 col-md-2 col-lg-2">
-      <label >ID Produit</label>
+      <label >ID</label>
       <input   type="text"  [(ngModel)]="newProduct.id"
-               name="idProduit" class="form-control">
+               name="id" class="form-control">
     </div>
 
     <div class="col-sm-4 col-md-4 col-lg-4" >
-      <label >Nom Produit</label>
+      <label >Name</label>
       <input  type="text" [(ngModel)]= "newProduct.name"
-              name="nomProduit" class="form-control">
+              name="name" class="form-control">
     </div>
 
     <div class="col-sm-2 col-md-2 col-lg-2">
-      <label >Prix Produit</label>
+      <label >Price</label>
       <input type="number" [(ngModel)]= "newProduct.price"
-             name="prixProduit" class="form-control">
+             name="pricet" class="form-control">
     </div>
 
     <div class="col-sm-4 col-md-4 col-lg-4">
-      <label >Date création</label>
-      <input type="date" [(ngModel)]= "newProduct.date"
-             name="dateCreation" class="form-control">
+      <label >Date</label>
+      <input type="date" [(ngModel)]= "newProduct.date" (ngModelChange)="newProduct.date=$event"
+             name="date" class="form-control">
     </div>
 
     <div class="mt-2">
-      <button type="submit" (click)="addProduct()" class="btn btn-success">Ajouter</button>
+      <button type="submit" (click)="addProduct()" class="btn btn-success">Add</button>
     </div>
 
     <div class="mt-2">

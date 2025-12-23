@@ -22,4 +22,27 @@ export class ProductService {
   addProduct(product: Product) {
     this.products.push(product);
   }
+
+  deleteProduct(product: Product) {
+    const index = this.products.indexOf(product);
+    if (index >= 0) {
+      this.products.splice(index, 1);
+    }
+  }
+
+  getProduct(id: number): Product {
+    let product = this.products.find((product) => product.id == id);
+    if (product == null) {
+      return new Product();
+    }
+    return product;
+  }
+
+  updateProduct(product: Product) {
+    const index = this.products.indexOf(product);
+    if (index >= 0) {
+      this.products.splice(index, 1);
+      this.products.splice(index, 0, product);
+    }
+  }
 }

@@ -21,6 +21,8 @@
             <td>{{product.name}}</td>
             <td>{{product.price}}</td>
             <td>{{product.date | date: "dd/MM/yyyy"}}</td>
+            <td><a class="btn btn-danger" (click)="deleteProduct(product)">Delete</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/update-product', product.id]">Update</a></td>
           </tr>
           </tbody>
           @if (last){
